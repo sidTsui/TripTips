@@ -1,0 +1,23 @@
+<div class="grid-container">
+  <div *ngFor="let post of posts" class="grid-item" (click)="openDialog(post)">
+    <ng-container *ngIf="post.image; else noImage">
+      <img src="{{ post.image }}" alt="Post Image" class="post-image" />
+    </ng-container>
+    <ng-template #noImage>
+        <!-- <p>{{ post.comment }}</p> -->
+        <img class="post-image" src = "assets/images/black_img_2.jpeg">
+    </ng-template>
+    <div class="post-details">
+      <div class="post-date">
+        {{ post.createdAt!.toDate() | date: 'longDate' }}
+      </div>
+      <ngx-stars
+        [readonly]="true"
+        [size]="2"
+        [color]="'#ffcf40'"
+        [maxStars]="5"
+        [initialStars]="post!.rating!"
+      ></ngx-stars>
+    </div>
+  </div>
+</div>

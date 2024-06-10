@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  justify-content: space-between; /* Adjusts the spacing between the two divs */
+  align-items: flex-start; /* Aligns items to the start of the flex container */
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column; /* Ensures the file input and image preview are stacked vertically */
+  align-items: center; /* Centers the items horizontally */
+}
+
+.profile-pic {
+  color: transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+
+  input {
+    display: none;
+  }
+
+  img {
+    position: absolute;
+    object-fit: cover;
+    width: 165px;
+    height: 165px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    z-index: 0;
+  }
+
+  .-label {
+    cursor: pointer;
+    height: 165px;
+    width: 165px;
+  }
+
+  &:hover {
+    .-label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      transition: background-color 0.2s ease-in-out;
+      border-radius: 100px;
+      margin-bottom: 0;
+    }
+  }
+
+  span {
+    display: inline-flex;
+    padding: 0.2em;
+    height: 2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .upload-section {
+    margin-top: 20px; 
+  }
+}
+
+/* query for screen compatability */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row; 
+    justify-content: space-between; /* helps for formatting in mobile view */
+  }
+
+  .upload-section {
+    margin-top: 0; /* fix margin */
+  }
+}

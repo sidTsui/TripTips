@@ -1,0 +1,14 @@
+<div id="container">
+  <aside>
+    <h2>{{ user.displayName }}</h2>
+    <img src="{{ user.photoURL }}" alt="profile pic" />
+    <button (click)="openSettingsDialog()">Settings</button>
+    <button class="profile-button" (click)="viewFollowersList()">Followers</button>
+    <button class="profile-button" (click)="viewFollowingList()">Following</button>
+  </aside>
+  <div class="posts">
+    <app-map-box [userId]="user!.uid!"></app-map-box>
+    <br />
+    <app-post-dashboard [userId]="user!.uid!" [editable]="true"></app-post-dashboard>
+  </div>
+</div>

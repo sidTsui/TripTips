@@ -1,0 +1,43 @@
+
+<mat-dialog-content align="center" style="min-height: 100vh;">
+<div class="post-details-container">
+  <div class="post-header">
+    <h2>Post Details</h2>
+    <div class="post-buttons">
+      <button class="edit-button" (click)="editPost()" [hidden]="!editMode">Edit Post</button>
+      <button class="delete-button" (click)="deletePost()" [hidden]="!editMode">Delete Post</button>
+    </div>
+  </div>
+  <div id="postMap" style="max-width: 740px; max-height: 250px"></div>
+  <div class="post-content">
+    <div class="post-image">
+      <img [src]="post.image" alt="Post Image" />
+    </div>
+    <div class="post-info">
+      <div class="post-details">
+        <div class="stars">
+        <ngx-stars
+          #starsComponent
+          [readonly]="true"
+          [size]="2"
+          [color]="'#ffcf40'"
+          [initialStars]="post.rating!"
+        ></ngx-stars>
+        </div>
+        <div class="date-likes-caption">
+          <div>
+        <fa-icon [icon]="faCalendar"></fa-icon>
+        {{ post.createdAt!.toDate() | date: 'MM/d/YYYY' }}
+        </div>
+        <div class="likes">
+        <fa-icon [icon]="faHeart" style="color: #ff0000" (click)="handleLike()"></fa-icon>
+        <span>{{ post.likes!.length }}</span>
+        </div>
+      </div>
+      <p>{{ post.comment }}</p>
+      <app-post-comment [post]="post"></app-post-comment>
+      </div>
+    </div>
+  </div>
+</div>
+</mat-dialog-content>

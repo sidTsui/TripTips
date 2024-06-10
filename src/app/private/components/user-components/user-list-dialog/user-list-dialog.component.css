@@ -1,0 +1,30 @@
+app-user-profile-button {
+  display: block; /* makes the element fill the container width */
+  width: 100%; /* use full width of the container */
+}
+
+mat-dialog-content {
+  width: 100%; /* ensure full width */
+  display: flex; /* using flex can help manage children widths better */
+  flex-direction: column; /* stack children vertically */
+}
+
+div {
+  width: 100%;
+}
+
+div > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+button {
+  margin-left: 0.5em;
+}
+
+#closeBtn {
+  margin: 0 auto;
+}

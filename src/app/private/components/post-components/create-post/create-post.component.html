@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Create Post</h2>
+<mat-dialog-content align="center">
+  <form [formGroup]="createPost" (ngSubmit)="createPostSubmit()" class="styled-form">
+    <div class="stars-container">
+      <ngx-stars
+        [readonly]="false"
+        [size]="2"
+        [color]="'#ffcf40'"
+        [maxStars]="5"
+        (ratingOutput)="onRatingSet($event)"
+      ></ngx-stars>
+    </div>
+    <mat-error *ngIf="createPost.get('rating')!.hasError('required')" style="color: red">
+      Rating is required
+    </mat-error>
+
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label for="comment">Comment</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="20"
+          formControlName="comment"
+        ></textarea>
+        <mat-error
+          *ngIf="createPost.get('comment')!.hasError('required') && createPost.get('comment')!.touched"
+          style="color: red"
+        >
+          Comment is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="file-uploader">
+      <input type="file" id="fileInput" accept="image/*" (change)="fileChangeEvent($event)" />
+      <label for="fileInput" class="file-button">Choose a file</label>
+      <span class="selected-file"></span> <!-- This span will display the selected file name -->
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="3.5 / 5"
+        [resizeToWidth]="500"
+        format="png"
+        output="base64"
+        [hideResizeSquares]="true"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    cdkFocusInitial
+    mat-dialog-close="true"
+    (click)="createPostSubmit()"
+    disabled="{{ !createPost.valid }}"
+  >
+    Create Post
+  </button>
+</mat-dialog-actions>

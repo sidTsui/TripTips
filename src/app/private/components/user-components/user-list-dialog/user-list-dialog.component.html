@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <div> 
+    <div *ngFor="let user of users; let i = index">
+      <app-user-profile-button [userId]="user"></app-user-profile-button>
+      <button mat-flat-button color="warn" (click)="unblockUser(user)" *ngIf="showUnblockButton">Unblock</button>
+      <button mat-flat-button color="warn" (click)="unfollowUser(user)" *ngIf="showUnfollowButton">unfollow</button>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions id="closeBtn">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

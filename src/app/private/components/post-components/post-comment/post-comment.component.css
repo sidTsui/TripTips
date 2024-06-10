@@ -1,0 +1,187 @@
+h3 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 60%;
+  height:50vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  border-radius: 5px;
+  background-color: white;
+  margin-left:350px;
+  scrollbar-color: lightgrey darkgrey;
+  scrollbar-width: thin;
+  object-fit: cover;
+
+}
+
+.comments {
+  width: 100%;
+  max-height: 100%; /* Match the max-height of .comment-container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border-radius: 5px;
+  background-color: rgb(236, 236, 236);
+  margin-top:120px;
+  object-fit: cover;
+}
+
+.send-message-input { /*message input bar
+  /* padding: 10px 100px 10px 20px; */
+  line-height: 1;
+  box-sizing: border-box;
+  outline: none;
+  overflow-wrap: break-word;
+  position:absolute;
+  width:700px;
+  height:100px;
+  object-fit: cover;
+  border-radius: 2px;
+  display:flex;
+}
+.comment-input { /*message send box*/
+  align-items: center;
+  width: 100%;
+  max-height: 100%; 
+  overflow-y: auto; 
+  border-radius: 5px;
+  background-color: rgb(236, 236, 236);
+  margin-top:10px;
+  margin-left:55px;
+  object-fit: cover;
+  display:flex;
+  flex-direction: column;
+
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  background-color: lightgray;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.send-message-button {
+  position: absolute; 
+  right:-25px;
+  bottom:25px;
+  display: flex;
+
+}
+
+
+.message-input-field {
+  flex-grow: 1; /* This allows the input to grow and fill the space */
+}
+
+
+/* Styles for message content */
+.comment-content {
+  position: relative; /* Required for positioning pseudo-elements */
+ 
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px 10px;
+  word-wrap: break-word;
+}
+
+/* Base styles for the message containers */
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.message-author {
+  color: #9a9898;
+  font-size: small;
+  margin: 0 10px;
+}
+
+.other .message-content {
+  background-color: #d3d3d3;
+  align-self: flex-start;
+}
+
+.other .comment-content::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  border-top: 5px solid transparent;
+  border-right: 10px solid #d3d3d3;
+  border-bottom: 5px solid transparent;
+}
+
+/* Specific styles for text and image messages */
+.message-text {
+  margin: 0; /* Removes default paragraph margin */
+}
+
+.message-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px; /* Optional: Rounds corners of images */
+}
+
+.other {
+  align-items: flex-start;
+}
+
+.other .comment-content {
+  background-color: #d3d3d3; /* Light gray for others' messages */
+}
+@media screen and (max-width: 900px) {
+  .comment-container {
+    width: auto; 
+    max-width: 100%;
+    margin: 20px auto;
+    position: relative; 
+    margin-right:20px;
+    z-index:0;
+    object-fit: cover;
+    display:flex;
+    flex-direction: column; 
+    align-items: center; 
+
+  }
+
+  .comments {
+    width: 100%;
+    max-height: 100%; 
+    overflow-y: auto; 
+    border-radius: 5px;
+    background-color: rgb(236, 236, 236);
+    margin-top:120px;
+    z-index: 1;
+
+  }
+
+  .send-message-input {
+    width:100%; /* Adjust width as needed */
+    height: auto;
+    max-height: 150px; 
+    margin-right:130px;
+  }
+
+  .comment-input {
+  
+    bottom: auto;
+    margin-top: 20px; /* Add margin to separate from the comments */
+  }
+  
+}

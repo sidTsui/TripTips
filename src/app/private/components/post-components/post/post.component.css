@@ -1,0 +1,62 @@
+div {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+img {
+  width: 20%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Create 4 columns */
+  gap: 20px; /* Space between grid items */
+  padding: 20px; /* Padding around the grid */
+}
+
+.grid-item {
+  background: #f0f0f0; /* Light background for each item */
+  border-radius: 8px; /* Rounded corners for the grid items */
+  overflow: hidden; /* Ensures content fits within the borders */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s; /* Smooth transform on hover */
+}
+
+.grid-item:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.post-image {
+  width: 100%; /* Ensure image covers the width of the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;  /*Cover the designated area without stretching */
+}
+
+.post-details {
+  padding: 10px; /* Padding inside the post details container */
+  text-align: center; /* Center the text */
+}
+
+.post-date,
+.post-rating {
+  margin-top: 10px; /* Spacing between date and rating */
+  font-size: 14px; /* Smaller font size for details */
+}
+
+.post-comment {
+  width: 100px; 
+  padding: 20px; 
+  height: 166.66px;
+  text-align: center; 
+  background-color: #fff; 
+}
+
+@media only screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr); /* Adjust to 2 columns on mobiles */
+  }
+  img {
+    width: 50%; 
+    
+  }
+}

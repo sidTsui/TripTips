@@ -1,0 +1,11 @@
+<div *ngIf="user">
+  <button (click)="goToUser()">
+    <div id="user-display">
+      <img src="{{ user.profilePicture }}" id="output"/>
+      <div id="text-content">
+        <span id="username">{{ user.username }}</span>
+        <span id="fullname">{{ user.firstName }} {{ user.lastName }}</span>
+      </div>
+    </div>
+  </button>
+</div>

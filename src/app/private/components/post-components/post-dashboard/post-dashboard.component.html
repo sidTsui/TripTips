@@ -1,0 +1,10 @@
+<div *ngIf="posts!.length > 0; else no_post">
+  <app-post [posts]="posts" [editable]="editable"></app-post>
+</div>
+
+<ng-template #no_post>
+  <div style="height: 100%; width: 100%; text-align: center">
+    <p><strong>No post available</strong></p>
+  </div>
+  <br />
+</ng-template>

@@ -1,0 +1,12 @@
+<div 
+  [ngClass]="{
+    'message-container': true,
+    own: message.createdById === userId,
+    other: message.createdById !== userId
+  }"
+>
+  <span class="message-author">{{ message.createdBy }}</span>
+  <div class="message-content text">
+    <p class="message-text">{{ message.content }}</p>
+  </div>
+</div>

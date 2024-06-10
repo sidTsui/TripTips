@@ -1,0 +1,17 @@
+<form class="edit-post-form" (ngSubmit)="saveChanges()">
+  <ngx-stars
+    [readonly]="false"
+    [size]="2"
+    [color]="'#ffcf40'"
+    [maxStars]="5"
+    (ratingOutput)="onRatingSet($event)"
+    [initialStars]="editedPost.rating!"
+  ></ngx-stars>
+  <div class="form-group">
+    <label for="postComment">Comment:</label>
+    <textarea id="postComment" name="postComment" [(ngModel)]="editedPost!.comment" required></textarea>
+  </div>
+  <div class="button-container">
+    <button type="submit" class="submit-button">Save Changes</button>
+  </div>
+</form>

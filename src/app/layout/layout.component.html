@@ -1,0 +1,86 @@
+<div class="main">
+  <div class="header">
+    <!-- Hamburger menu ( mobile) -->
+    <div id="textbook" class="hamburger-menu">
+      <button class="open-btn" (click)="toggleDrawer()">☰</button>
+    </div>
+    <!-- Left side img (desktop) -->
+    <div id="textbook" class="leftImg desktop-only">
+        <!-- Include your left side icons here -->
+        <a href="s/home">
+          <img src="https://freight.cargo.site/t/original/i/ad17e5555ca848b1ad04351618cc14389fccbc2df5511eb820407000b19ae226/335-3354019_white-home-button-icon-png-for-kids-white.png" alt="Home">
+        </a>
+        <a href="s/explore">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/White_Globe_Icon.png/1200px-White_Globe_Icon.png" alt="Explore">
+        </a>
+        <a href="s/followers">
+          <img src="https://girlpower2cure.org/wp-content/uploads/2019/05/Asset-2-2.png" alt="Followers">
+        </a>
+    </div>
+    <!-- Right side img (desktop) -->
+    <div id="textbook" class="rightImg desktop-only">
+      <div class="searchbtn">
+        <div class="container">
+            <input type="text" placeholder="Search..." (input)="filterUsers($event)" [matAutocomplete]="auto" [formControl]="searchUsername">
+            <div class="search"></div>
+            <mat-autocomplete
+              #auto="matAutocomplete"
+              [displayWith]="displayFn"
+              (optionSelected)="setSelectedUser($event.option.value)"
+              class="dropdown"
+            >
+              <ng-container>
+                <mat-option *ngFor="let user of filteredUsers" [value]="user">
+                  <span>{{ user.username }}</span>
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+        </div>
+      </div>
+      <a href="s/profile">
+        <img src="https://justatic.com/v/20240109120306/shared/images/icons/placeholders/profile.png" alt="Profile" />
+      </a>
+      <a (click)="openChat()">
+        <img src="https://flaticons.net/icon.php?slug_category=mobile-application&slug_icon=messages" alt="Chat" />
+      </a>
+      <a (click)="openSettingsModal()">
+        <img src="https://flaticons.net/icon.php?slug_category=mobile-application&slug_icon=settings-01" alt="Settings" />
+      </a>
+      <a (click)="logout()">
+        <img src="https://flaticons.net/icon.php?slug_category=mobile-application&slug_icon=logout-wf" alt="Logout" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<mat-drawer-container class="drawer-container" [hasBackdrop]="true">
+  <mat-drawer #drawer mode="push" style="width: 250px; background-color: #52AA5E" [opened]="drawerOpened">
+   <!--Drawer content (visible on mobile)-->
+    <div class="drawer-content">
+      <a href="s/home">
+        <span>Home</span>
+      </a>
+      <a href="s/explore">
+        <span>Explore</span>
+      </a>
+      <a href="s/followers">
+        <span>Followers</span>
+      </a>
+      <a href="s/profile">
+        <span>Profile</span>
+      </a>
+      <a (click)="openChat()">
+        <span>Chat</span>
+      </a>
+      <a (click)="openSettingsModal()">
+        <span>Settings</span>
+      </a>
+      <a (click)="logout()">
+        <span>Logout</span>
+      </a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

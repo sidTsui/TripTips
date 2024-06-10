@@ -1,0 +1,39 @@
+<div *ngIf="chatRoom; else no_chatroom_selected">
+  <div #messages class="message">
+    <div *ngIf="messagesPaginate$ | async as messages; else loadingMessages">
+      <div *ngFor="let message of messages; let i = index">
+        <app-chat-message [message]="message"></app-chat-message>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class = "message-button" style="position: fixed; bottom: 0; width:72%; height: 13vh; padding: 10px;">
+    <div class="message-button" style="display: flex; flex-direction: row; align-items: center; margin-left: -30px;">
+      <mat-form-field style="flex-grow:1;">
+        <div class ="message-container">
+        <textarea
+          #inputText
+          matInput
+          matTextareaAutosize
+          matAutosizeMinRows="0"
+          placeholder="Message..."
+          [formControl]="chatMessage"
+        ></textarea>
+        </div>
+      </mat-form-field>
+      <button mat-button [disabled]="!chatMessage.valid" (click)="sendMessage()" class="send-message-button">
+        <span style="display: flex; flex-direction: row; align-items: center">
+          <mat-icon style="margin-left: 20px">send</mat-icon>
+        </span>
+      </button>
+      </div>
+    </div>
+  </div>
+
+<ng-template #no_chatroom_selected>
+  <mat-error>No Chatroom Selected</mat-error>
+</ng-template>
+
+<ng-template #loadingMessages>
+  <div>Loading messages...</div>
+</ng-template>

@@ -1,0 +1,39 @@
+<div class="comment-container">
+  <div class="comments" *ngIf="comments != null; else no_comments">
+    <div *ngFor="let comment of comments" class="message-container other">
+      <div>
+        <div class="comment-content text">
+          <p class="message-text">{{ comment.comment }}</p>
+        </div>
+        <button mat-icon-button aria-label="Delete Comment" (click)="deleteComment(comment.id!)" style="flex-shrink: 0;" *ngIf="currentUserId == comment.createdById">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <span class="message-author">{{ comment.createdBy }} - {{ comment.createdAt?.toDate() | date: 'longDate' }}</span>
+    </div>
+  </div>
+</div>
+  <ng-template #no_comments>
+    <div style="height: 100%; width: 100%; text-align: center">
+      <p><strong>No comments available</strong></p>
+    </div>
+    <br />
+  </ng-template>
+
+  <div class="comment-input">
+    <mat-form-field class="send-message-input">
+      <textarea
+        #inputText
+        matInput
+        matTextareaAutosize
+        matAutosizeMinRows="0"
+        placeholder="Write a comment..."
+        [formControl]="comment"
+      ></textarea>
+      <button mat-button [disabled]="!comment.valid" (click)="submitComment()" class="send-message-button">
+        <span>
+          <mat-icon>send</mat-icon>
+        </span>
+      </button>
+    </mat-form-field>
+  </div>

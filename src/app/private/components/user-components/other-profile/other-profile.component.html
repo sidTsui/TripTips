@@ -1,0 +1,34 @@
+<div class="profile-container" *ngIf="user">
+  <div class="flex-container">
+    <div class="info-panel left-panel">
+      <h2>{{ user.username }}</h2>
+      <div class="profile-pic">
+        <label class="-label" for="file">
+          <span class="glyphicon glyphicon-camera"></span>
+        </label>
+        <img src="{{ user.profilePicture }}" id="output" width="200" />
+      </div>
+      <button class="profile-button" (click)="followAccount()">
+        {{ following ? 'follow' : 'unfollow' }}
+      </button>
+      <button class="profile-button" (click)="blockUser()">
+        {{ blocked ? 'unblock' : 'block' }}
+      </button>
+      <button class="profile-button" (click)="viewFollowersList()">Followers</button>
+      <button class="profile-button" (click)="viewFollowingList()">Following</button>
+    </div>
+    <div class="map-box">
+      <app-map-box [userId]="userId!" height="300px" [readOnly]="true"></app-map-box>
+    </div>
+
+    <div class="info-panel right-panel">
+      <h3>About {{ user.username }}</h3>
+      <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="placeholder-post" *ngIf="user">
+  <app-post-dashboard [userId]="userId" [editable]="false"></app-post-dashboard>
+</div>

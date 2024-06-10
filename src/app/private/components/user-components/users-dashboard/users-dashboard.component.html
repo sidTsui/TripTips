@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="user-list">
+    <div *ngIf="users$ | async as users; else no_users" class="users">
+      <mat-nav-list>
+        <ng-container *ngFor="let user of users; let i = index">
+          <mat-list-item (click)="onSelectUser(user)">
+            <button mat-icon-button>
+              <div class="user-display">
+                <div class="profile-pic">
+                  <img src="{{ user.profilePicture }}" id="output" width="5" />
+                  <label class="-label">
+                    <span></span>
+                  </label>
+                </div>
+                <div class="text-content">
+                  <span class="username">{{ user.username }}</span>
+                  <span class="fullname">{{ user.firstName }} {{ user.lastName }}</span>
+                </div>
+              </div>
+            </button>
+          </mat-list-item>
+          <mat-divider *ngIf="i < users.length - 1"></mat-divider>
+        </ng-container>
+      </mat-nav-list>
+    </div>
+  </div>
+  <div *ngIf="userSelected$; else no_user_selected" class="profile">
+    <app-other-profile [userId]="selectedUser.id"></app-other-profile>
+  </div>
+</div>
+
+<ng-template #no_users>
+  <div style="height: 100%; width: 100%; color: red; text-align: center" class="users">
+    <mat-error>No Users available</mat-error>
+  </div>
+  <br />
+</ng-template>
+
+<ng-template #no_user_selected>
+  <div style="height: 100%; width: 100%; text-align: center" class="profile">
+    <mat-hint><h3 style="color: grey">No User selected</h3></mat-hint>
+  </div>
+  <br />
+</ng-template>

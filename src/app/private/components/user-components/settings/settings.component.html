@@ -1,0 +1,26 @@
+<div class="modal-container">
+  <h2 mat-dialog-title align="center">Settings</h2>
+  <mat-dialog-content align="center">
+    <div *ngIf="user" class="container">
+      <div class="upload-section">
+        <div class="profile-pic">
+          <label class="-label" for="file">
+            <span class="glyphicon glyphicon-camera"></span>
+          </label>
+          <input id="file" type="file" (change)="loadFile($event)" accept="image/*"/>
+          <img src={{previewUrl}} id="output" width="200" />
+        </div>
+      </div>
+      <div>
+        <h2>User Account Information</h2>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <button mat-raised-button color="grey" (click)="openPasswordChangeModal()" style="margin-right: 5px;">Change Password</button>
+        <button mat-raised-button color="blue" (click)="openBlockedUserModal()">Blocked Users</button>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close="true">Cancel</button>
+  </mat-dialog-actions>
+</div>
